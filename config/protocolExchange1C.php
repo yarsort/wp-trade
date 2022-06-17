@@ -124,7 +124,7 @@ return [
      * имя куки сессии и ИД сессии
      */
     'middleware'         => [
-        '\App\Http\Kernel',
+        //'\App\Http\Kernel',
     ],
 
     /*

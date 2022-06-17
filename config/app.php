@@ -162,15 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers... 
-         */
-        
-        /*
-        * Протокол обмена информацией с 1С
-        */
+        //Протокол обмена информацией с 1С
         Mavsan\LaProtocol\Providers\ProtocolProvider::class,
-        
+
         /*
          * Application Service Providers...
          */
