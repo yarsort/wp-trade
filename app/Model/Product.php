@@ -9,6 +9,8 @@ class Product extends Model
     public $id;
     public $status;
     public $name;
+    public $uid_supplier;
+    public $is_group;
 
     protected $table = 'ref_product';
 

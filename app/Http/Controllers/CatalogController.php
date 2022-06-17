@@ -480,24 +480,28 @@ class CatalogController extends BaseController
         if ($fileName == 'import.xml') {
 
             // TODO write to DB
-            // TODO develop a database structure
 
-            // now not all fields of a product are written to DB
+            $seller_xml = $phpArray['Классификатор']['Владелец'];
 
-            // Прям вот так можем работать с xml документом
-            // массив всех товаров
+            // Каталоги товаров
+            $products_group_xml = $phpArray['Классификатор']['Группы']['Группа'];
+            foreach ($products_group_xml as $product_group_xml) {
+                $product = new Product();
+                $product->id = $product_group_xml['Ид'];
+                $product->is_group = true;
+                $product->uid_supplier = $seller_xml['Ид']; // Поставщик
+                $product->name = $product_group_xml['Наименование'];
+                $product->save();
+            }
+
+            // Товары
             $products_xml = $phpArray['Каталог']['Товары']['Товар'];
-
             foreach ($products_xml as $product_xml) {
-                // print_r($product_xml);
-
                 $product = new Product();
                 $product->id = $product_xml['Ид'];
+                $product->uid_supplier = $seller_xml['Ид']; // Поставщик
                 $product->name = $product_xml['Наименование'];
                 $product->save();
-
-                // TODO discuss database structure and continue
-
             }
 
             return true;
