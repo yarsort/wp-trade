@@ -6,11 +6,11 @@
  * Time: 9:09 PM
  */
 
-namespace Mavsan\LaProtocol\Http\Controllers\Traits;
+namespace App\Http\Controllers\Traits;
 
 use App;
 use Exception;
-use File;
+use Illuminate\Support\Facades\File;
 use Mavsan\LaProtocol\Interfaces\Import;
 use Mavsan\LaProtocol\Interfaces\ImportBitrix;
 use Mavsan\LaProtocol\Model\FileName;

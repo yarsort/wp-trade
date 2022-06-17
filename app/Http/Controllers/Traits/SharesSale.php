@@ -6,7 +6,7 @@
  * Time: 9:08 PM
  */
 
-namespace Mavsan\LaProtocol\Http\Controllers\Traits;
+namespace App\Http\Controllers\Traits;
 
 
 use Mavsan\LaProtocol\Interfaces\ExportOrders;

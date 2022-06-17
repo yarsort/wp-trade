@@ -7,20 +7,20 @@
  * Email: mavsan@gmail.com
  */
 
-namespace Mavsan\LaProtocol\Http\Controllers;
+namespace App\Http\Controllers;
 
-use App\Model\Product;
-use Auth;
-use Exception;
-use File;
-use Gate;
 use Illuminate\Http\Request;
+use App\Model\Product;
+use Illuminate\Support\Facades\Auth;
+use Exception;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Routing\Controller as BaseController;
-use Log;
-use Mavsan\LaProtocol\Http\Controllers\Traits\ImportsCatalog;
-use Mavsan\LaProtocol\Http\Controllers\Traits\SharesSale;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Traits\ImportsCatalog;
+use App\Http\Controllers\Traits\SharesSale;
 use Mavsan\LaProtocol\Model\FileName;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class CatalogController extends BaseController
 {
@@ -114,39 +114,28 @@ class CatalogController extends BaseController
         switch ($mode) {
             case $this->stepCheckAuth:
                 return $this->checkAuth($type);
-                break;
-
             case $this->stepInit:
                 return $this->init($type);
-                break;
-
             case $this->stepFile:
                 return $this->getFile();
-                break;
-
             case $this->stepImport:
                 try {
                     return $this->import();
                 } catch (Exception $e) {
                     return $this->failure($e->getMessage());
                 }
-                break;
-
             case $this->stepDeactivate:
                 $startTime = $this->getStartTime();
 
                 return $startTime !== null
                     ? $this->importDeactivate($startTime)
                     : $this->failure('Cannot get start time of session, url: '.$this->request->fullUrl()."\nRegexp: (\d{4}-\d\d-\d\d)_(\d\d:\d\d:\d\d)");
-                break;
 
             case $this->stepComplete:
                 return $this->importComplete();
-                break;
 
             case $this->stepQuery:
                 return $this->processQuery();
-                break;
 
             case $this->stepSuccess:
                 if($type === 'sale') {
@@ -222,7 +211,7 @@ class CatalogController extends BaseController
      * Попытка входа
      * @return bool
      */
-    protected function userLogin()
+    protected function userLogin(): bool
     {
         if (Auth::getUser() === null) {
             $user = \Request::getUser();
@@ -484,8 +473,8 @@ class CatalogController extends BaseController
             $seller_xml = $phpArray['Классификатор']['Владелец'];
 
             // Каталоги товаров
-            $products_group_xml = $phpArray['Классификатор']['Группы']['Группа'];
-            foreach ($products_group_xml as $product_group_xml) {
+            $group_xml = $phpArray['Классификатор']['Группы']['Группа'];
+            foreach ($group_xml as $product_group_xml) {
                 $product = new Product();
                 $product->id = $product_group_xml['Ид'];
                 $product->is_group = true;
