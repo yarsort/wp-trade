@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    protected $hidden = [
+        'uid_supplier',
+    ];
+
     /**
      * Display a listing of the resource.
      *
