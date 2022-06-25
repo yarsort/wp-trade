@@ -14,7 +14,7 @@ class ProductCharacteristicController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(ProductCharacteristic::get(), 200);
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Product;
 use Illuminate\Http\Request;
+
+use App\Model\Product;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Product::get(), 200);
     }
 
     /**

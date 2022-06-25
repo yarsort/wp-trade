@@ -14,7 +14,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Price::get(), 200);
     }
 
     /**

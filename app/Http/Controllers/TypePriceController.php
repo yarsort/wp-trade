@@ -14,7 +14,7 @@ class TypePriceController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(TypePrice::get(), 200);
     }
 
     /**

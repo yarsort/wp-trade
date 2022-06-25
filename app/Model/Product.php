@@ -12,13 +12,14 @@ class Product extends Model
     public $uid_supplier;
     public $is_group;
 
+    // Справочник "Номенклатура"
     protected $table = 'ref_product';
 
     protected $fillable = [
         'id',
         'status',
         'is_group',
-        'uid_supplier',
+        'uid_supplier',        
         'uid',
         'uid_parent',
         'code',

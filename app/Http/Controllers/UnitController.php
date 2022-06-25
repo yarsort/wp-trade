@@ -14,7 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Unit::get(), 200);
     }
 
     /**

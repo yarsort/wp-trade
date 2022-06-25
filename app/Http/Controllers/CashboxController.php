@@ -14,7 +14,7 @@ class CashboxController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Cashbox::get(), 200);
     }
 
     /**

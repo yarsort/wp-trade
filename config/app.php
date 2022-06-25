@@ -162,9 +162,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        //Протокол обмена информацией с 1С
-        Mavsan\LaProtocol\Providers\ProtocolProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -225,9 +222,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        'catalogWorkModel'   => \App\Model::class,
-
     ],
 
 ];
